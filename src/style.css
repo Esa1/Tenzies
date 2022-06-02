@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.main {
+    height: 379px;
+    width: 360px;
+    margin-left: 76px;
+    margin-top: 69px;
+    padding-left: 20px;
+    padding-top: 30px;
+    background: #0B2434;
+}
+
+.gameArea {
+    height: 320px;
+    width: 320px;
+    border-radius: 10px;
+    background: #F5F5F5;
+}
