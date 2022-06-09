@@ -36,25 +36,11 @@ main {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-/*background-color: #59E391;*/
 }
 
-.die-face-notheld {
-    background-color: white;
-}
-.die-face-held {
-    background-color: #59E391;
-}
 .die-num {
     font-size: 2rem;
-/*    background-color: white;*/
 }
-
-/*.die-num-held {
-    font-size: 2rem;
-    background-color: #59E391;
-    color: #59E391;
-}*/
 
 .roll-dice {
     height: 50px;
