@@ -1,11 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Die from "./Components/Die"
 import {nanoid} from "nanoid"
 
 export default function App() {
 
     const [dice, setDice] = React.useState(allNewDice())
-    
+    const [tenzies, setTenzies] = React.useState(false)
+    console.log(tenzies)
+    React.useEffect(() => {
+        const allHeld = dice.every(die => die.isHeld)
+        const firstValue = dice[0].value
+        const allSameValue = dice.every(die => die.value === firstValue)
+        if (allHeld && allSameValue) {
+            setTenzies(true)
+            console.log("You won!")
+        }
+    }, [dice])
+/**
+ * Challenge: Tie off loose ends!
+ * 1. If tenzies is true, Change the button text to "New Game"
+ * 2. If tenzies is true, use the "react-confetti" package to
+ *    render the <Confetti /> component 🎉
+ * 
+ *    Hint: don't worry about the `height` and `width` props
+ *    it mentions in the documentation.
+ */
+
     function generateNewDie() {
         return {
             value: Math.ceil(Math.random() * 6),
@@ -23,15 +43,6 @@ export default function App() {
     }
     
     
-/**
- * Challenge: Update the `rollDice` function to not just roll
- * all new dice, but instead to look through the existing dice
- * to NOT role any that are being `held`.
- * 
- * Hint: this will look relatively similiar to the `holdDice`
- * function below. When creating new dice, remember to use
- * `id: nanoid()` so any new dice have an `id` as well.
- */
     function rollDice() {
         setDice(oldDice => oldDice.map(die => {
             return die.isHeld ? 
@@ -64,7 +75,9 @@ export default function App() {
             <div className="dice-container">
                 {diceElements}
             </div>
-            <button className="roll-dice" onClick={rollDice}>Roll</button>
+            <button className="roll-dice" onClick={rollDice}>
+                {tenzies ? "New game" : "Roll"}
+            </button>
         </main>
     )
 }
